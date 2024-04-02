@@ -1,10 +1,9 @@
-import { Router } from "express";
-import { StatusCodes } from "http-status-codes";
+import { Router } from 'express';
+import {CitiesController} from '../../controllers';
+
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  return res.status(StatusCodes.ACCEPTED).send('Olá, Dev!');
-});
+router.post('/cities', CitiesController.create);
 
 export {router};
