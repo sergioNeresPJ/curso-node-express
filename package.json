@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && node dist/index.js",
     "build": "babel src -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -16,14 +16,17 @@
     "http-status-codes": "^2.3.0",
     "i18next": "^23.10.1",
     "i18next-http-backend": "^2.5.0",
+    "jest": "^29.7.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
+    "@jest/globals": "^29.7.0",
     "eslint": "^8.57.0",
     "esm": "^3.2.25",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4"
   }
 }
