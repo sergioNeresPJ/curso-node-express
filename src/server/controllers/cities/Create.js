@@ -1,5 +1,7 @@
+import { CitiesProvider } from '../../database/providers/cities';
 import { validation } from '../../shared/middlewares';
 import * as yup from 'yup';
+import { StatusCodes } from 'http-status-codes';
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema(yup.object().shape({
@@ -9,5 +11,14 @@ export const createValidation = validation((getSchema) => ({
 
 export const create = async (req, res) => {
   console.log(req.body);
-  return res.send('Create!');
+  const result = await CitiesProvider.create(req.body);
+
+  if (result instanceof Error){
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message,
+      }
+    });
+  }
+  return res.status(StatusCodes.CREATED).json(result);
 };
